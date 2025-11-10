@@ -1,0 +1,6 @@
+ProjectEnv
+saved_model
+.pytest_cache
+artifacts
+data/__pycache__
+data/dataset
