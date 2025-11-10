@@ -1,6 +1,6 @@
 ProjectEnv
-saved_model
+models
 .pytest_cache
-artifacts
 data/__pycache__
 data/dataset
+app/__pycache__
