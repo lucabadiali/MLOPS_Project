@@ -8,7 +8,9 @@ from transformers import (
     TrainingArguments, Trainer, EarlyStoppingCallback,
     DataCollatorWithPadding
 )
-from datasets import load_from_disk
+from datasets import load_dataset,load_from_disk
+from pathlib import Path
+
 
 
 # --- Device detection ---
@@ -74,8 +76,12 @@ model.config.use_cache = False
 #### DATASET LOADING
 
 
-dataset_path = "data/dataset"  # same path you used before
-dataset = load_from_disk(dataset_path)
+dataset_path = Path("data/dataset") 
+if dataset_path.exists():
+    dataset = load_from_disk(dataset_path)
+else:
+    dataset = load_dataset('tweet_eval', 'sentiment')
+
 
 
 # ---- COPY-PASTE FROM HERE ----
