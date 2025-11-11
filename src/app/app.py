@@ -26,6 +26,9 @@ labels = [row[1] for row in csvreader if len(row) > 1]
 
 tokenizer, model = load_model_and_tokenizer(MODEL_SOURCE)
 
+@app.get("/")
+def read_root():
+    return {"status": "ok", "message": "Sentiment API is running"}
 
 @app.post("/predict")
 async def analyze_text(query:SentimentQuery):
