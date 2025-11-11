@@ -19,15 +19,15 @@ jobs:
 
       - name: Debug Hugging Face token
         env:
-          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          HF_HUB_TOKEN: ${{ secrets.HF_HUB_TOKEN }}
         run: |
-          echo "Token length: ${#HF_TOKEN}"
-          git ls-remote https://lucabadiali:${HF_TOKEN}@huggingface.co/spaces/lucabadiali/ML_OPS_Project || echo "ls-remote failed"
+          echo "Token length: ${#HF_HUB_TOKEN}"
+          git ls-remote https://lucabadiali:${HF_HUB_TOKEN}@huggingface.co/spaces/lucabadiali/ML_OPS_Project || echo "ls-remote failed"
 
       - name: Push to Hugging Face Space
         env:
-          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          HF_HUB_TOKEN: ${{ secrets.HF_HUB_TOKEN }}
         run: |
           git push --force \
-            https://lucabadiali:${HF_TOKEN}@huggingface.co/spaces/lucabadiali/ML_OPS_Project \
+            https://lucabadiali:${HF_HUB_TOKEN}@huggingface.co/spaces/lucabadiali/ML_OPS_Project \
             HEAD:main
