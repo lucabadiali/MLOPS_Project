@@ -4,3 +4,6 @@ models
 data/__pycache__
 data/dataset
 app/__pycache__
+src/app/__pycache__/__init__.cpython-311.pyc
+src/app/__pycache__/app.cpython-311.pyc
+src/app/__pycache__/utils.cpython-311.pyc
