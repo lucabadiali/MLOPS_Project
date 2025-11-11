@@ -1,0 +1,29 @@
+name: Deploy to Hugging Face Space
+
+on:
+  push:
+    branches:
+      - main       # or your default branch
+  # optional: allow manual trigger from Actions tab
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      - name: Push to Hugging Face Space
+        env:
+          HF_TOKEN: ${{ secrets.HF_HUB_TOKEN }}
+        run: |
+          # Add the HF Space as a remote
+          git remote add space https://huggingface.co/spaces/lucabadiali/ML_OPS_Project
+
+          # Push the current commit on main to the Space's main
+          git push --force https://lucabadiali:$HF_TOKEN@huggingface.co/spaces/lucabadiali/ML_OPS_Project HEAD:main
