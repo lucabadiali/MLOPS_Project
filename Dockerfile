@@ -6,9 +6,7 @@ RUN useradd -m -u 1000 user
 USER user
 
 # 3. Set working directory
-ENV HOME=/home/user
-WORKDIR /home/user/app
-
+WORKDIR /
 # 4. Copy dependency file and install deps
 COPY --chown=user requirements.txt .
 RUN python3 -m pip install --no-cache-dir -r requirements.txt
