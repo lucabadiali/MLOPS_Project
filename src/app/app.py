@@ -10,9 +10,11 @@ import requests
 from typing import Union, List
 import torch
 from .config import MODEL_SOURCE, ModelSource, load_model_and_tokenizer
+from prometheus_fastapi_instrumentator import Instrumentator
 
 
 app = FastAPI()
+Instrumentator().instrument(app).expose(app, endpoint="/metrics", include_in_schema=False)
 
 
 class SentimentQuery(BaseModel):
