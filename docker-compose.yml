@@ -8,7 +8,15 @@ services: # definisce servizi
     volumes: # dove salvare affinché sopravviva al container
       - grafana-storage:/var/lib/grafana
       - ./grafana-provisioning:/etc/grafana/provisioning # Optional: for provisioning
-    #environment:
-    #  - GF_INSTALL_PLUGINS=grafana-infinity-datasource # Install the Infinity plugin
+    environment:
+      - GF_INSTALL_PLUGINS= #grafana-infinity-datasource # Install the Infinity plugin
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    restart: unless-stopped
+    ports:
+      - '9090:9090'
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
 volumes:
   grafana-storage: {}

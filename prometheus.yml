@@ -1,0 +1,14 @@
+global:
+  scrape_interval: 30s   # più gentile verso HF
+
+scrape_configs:
+  - job_name: "fastapi_hf"
+    scheme: https
+    metrics_path: /metrics
+    static_configs:
+      - targets:
+          - "lucabadiali-ml-ops-project.hf.space:443"
+    # Se la Space è privata, aggiungi:
+    # authorization:
+    #   type: Bearer
+    #   credentials: "hf_XXXXXXXXXXXX"   # token read-only
