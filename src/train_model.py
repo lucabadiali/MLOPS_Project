@@ -1,4 +1,4 @@
-from app.utils import preprocess
+from app.utils import preprocess, load_dataset
 import urllib
 import csv
 import os
@@ -8,8 +8,8 @@ from transformers import (
     TrainingArguments, Trainer, EarlyStoppingCallback,
     DataCollatorWithPadding
 )
-from datasets import load_dataset,load_from_disk
 from pathlib import Path
+from app.config import DATASET_PATH
 
 
 # --- Device detection ---
@@ -73,14 +73,8 @@ model.gradient_checkpointing_enable()
 model.config.use_cache = False
 
 #### DATASET LOADING
-
-
-dataset_path = Path("data/dataset") 
-if dataset_path.exists():
-    dataset = load_from_disk(dataset_path)
-else:
-    dataset = load_dataset('tweet_eval', 'sentiment')
-
+ 
+dataset = load_dataset(DATASET_PATH)
 
 
 # ---- COPY-PASTE FROM HERE ----

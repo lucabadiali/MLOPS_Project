@@ -3,10 +3,11 @@ global:
 
 scrape_configs:
   - job_name: "fastapi_hf"
-    scheme: https
+    scheme: http
     metrics_path: /metrics
     static_configs:
       - targets:
+          #- "host.docker.internal:8000"
           - "lucabadiali-ml-ops-project.hf.space:443"
     # Se la Space è privata, aggiungi:
     # authorization:
