@@ -5,7 +5,10 @@ from datasets import load_dataset as hf_load_dataset
 from datasets import load_from_disk
 
 
-def preprocess(text):
+def preprocess(text:str)->str:
+    """
+    Returns an input text ready to be tokenized by removing special characters
+    """
     new_text = []
     for t in text.split(" "):
         t = '@user' if t.startswith('@') and len(t) > 1 else t
@@ -14,8 +17,11 @@ def preprocess(text):
     return " ".join(new_text)
 
 
-
-def load_model_and_tokenizer(MODEL_SOURCE):
+def load_model_and_tokenizer(MODEL_SOURCE:str)->(AutoTokenizer,AutoModelForSequenceClassification):
+    """
+    Loads a tokenizer and sentiment analysis model. These can be either loaded from local
+    or downloaded from Hugging Face API
+    """
     if MODEL_SOURCE == ModelSource.HF:   # use the latest model available in the HF hub
         tokenizer = AutoTokenizer.from_pretrained(HF_MODEL)
         model = AutoModelForSequenceClassification.from_pretrained(HF_MODEL)
@@ -27,7 +33,11 @@ def load_model_and_tokenizer(MODEL_SOURCE):
     return tokenizer, model
 
 
-def load_dataset(dataset_path):
+def load_dataset(dataset_path:str):
+    """
+    Loads the tweet_eval dataset for sentiment analysis task. The dataset
+    can be either loaded from local and downloaded through Hugging Face API
+    """
     if dataset_path.exists():
         dataset = load_from_disk(dataset_path)
     else:

@@ -9,7 +9,13 @@ from transformers import (
     DataCollatorWithPadding
 )
 from pathlib import Path
-from app.config import DATASET_PATH
+import os
+os.environ["TOKENIZERS_PARALLELISM"] = "false"
+from datasets import DatasetDict
+from transformers import AutoTokenizer, DataCollatorWithPadding
+from app.config import DATASET_PATH, TRAIN_FRACTION_SIZE, EVAL_FRACTION_SIZE
+
+
 
 
 # --- Device detection ---
@@ -77,18 +83,11 @@ model.config.use_cache = False
 dataset = load_dataset(DATASET_PATH)
 
 
-# ---- COPY-PASTE FROM HERE ----
-import os
-os.environ["TOKENIZERS_PARALLELISM"] = "false"
-
-from datasets import DatasetDict
-from transformers import AutoTokenizer, DataCollatorWithPadding
-
 def make_trainer_ready(
     raw_ds: DatasetDict,
     model_name: str = "cardiffnlp/twitter-roberta-base-sep2022",
     train_frac: float = 0.2,
-    val_frac: float = 0.2,
+    val_frac: float = 0.4,
     seed: int = 42,
     label_col: str = "label",
     text_col: str = "text",
@@ -156,8 +155,8 @@ def make_trainer_ready(
 train_ds, eval_ds, data_collator, tokenizer = make_trainer_ready(
     raw_ds=dataset,
     model_name="cardiffnlp/twitter-roberta-base-sep2022",
-    train_frac=0.2,    # take 20% of train
-    val_frac=0.5,      # take 50% of validation
+    train_frac=TRAIN_FRACTION_SIZE,    # take 20% of train
+    val_frac=EVAL_FRACTION_SIZE,      # take 50% of validation
     seed=42,
     label_col="label",
     text_col="text",
