@@ -1,5 +1,5 @@
 global:
-  scrape_interval: 60s   # più gentile verso HF
+  scrape_interval: 60s
 
 scrape_configs:
   - job_name: "fastapi_hf"
@@ -9,7 +9,3 @@ scrape_configs:
       - targets:
           #- "host.docker.internal:8000"
           - "lucabadiali-ml-ops-project.hf.space:443"
-    # Se l#a Space è privata, aggiungi:
-    # authorization:
-    #   type: Bearer
-    #   credentials: "hf_XXXXXXXXXXXX"   # token read-only

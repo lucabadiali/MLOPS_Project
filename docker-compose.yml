@@ -7,7 +7,6 @@ services: # definisce servizi
       - '3000:3000'
     volumes: # dove salvare affinché sopravviva al container
       - grafana-storage:/var/lib/grafana
-      - ./grafana-provisioning:/etc/grafana/provisioning # Optional: for provisioning
     environment:
       - GF_INSTALL_PLUGINS= #grafana-infinity-datasource # Install the Infinity plugin
   prometheus:
