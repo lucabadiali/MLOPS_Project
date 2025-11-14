@@ -18,4 +18,5 @@ COPY --chown=user . .
 EXPOSE 7860
 
 # 7. Start the app
-CMD [ "python3","-m", "uvicorn", "src.app.app:app", "--host", "0.0.0.0", "--port", "7860"]
+#CMD [ "python3","-m", "uvicorn", "src.app.app:app", "--host", "0.0.0.0", "--port", "7860"]
+CMD ["/bin/sh", "-c", ". ./env_config.sh && exec python3 -m uvicorn src.app.app:app --host 0.0.0.0 --port 7860"]
