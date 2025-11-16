@@ -1,11 +1,22 @@
-ProjectEnv
-models
-.pytest_cache
-data/__pycache__
-data/dataset
-app/__pycache__
-*.pyc
-.env
-src/__pycache__
-tests/__pycache__
+# Virtual envs / environments
+ProjectEnv/
+.venv/
+venv/
 
+# Model artifacts / data
+models/
+data/dataset/
+data/__pycache__/
+
+# Python caches
+**/__pycache__/
+*.py[cod]
+
+# Pytest cache
+.pytest_cache/
+
+# Environment files
+.env
+
+# Bytecode again (in case)
+*.pyc

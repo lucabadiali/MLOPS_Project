@@ -1,6 +1,6 @@
 import requests
 
-url = "http://127.0.0.1:8000/predict"
+url = "https://lucabadiali-ml-ops-project.hf.space/predict"
 
 data = {
     "input_texts" : [
