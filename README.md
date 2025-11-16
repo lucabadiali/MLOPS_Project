@@ -24,7 +24,7 @@ This is a small project that allows the user to fine tune or download a pretrain
 
 ## Project Structure
 
-
+```text
 .
 ├── .github/
 │   └── workflows/
@@ -54,7 +54,7 @@ This is a small project that allows the user to fine tune or download a pretrain
 ├── pytest.ini
 ├── README.md
 └── requirements.txt
-
+```
 
 ## Project Configuration
 
