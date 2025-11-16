@@ -22,36 +22,39 @@ This is a small project that allows the user to fine tune or download a pretrain
 - ✔ CD pipeline deploying a Dockerized FastAPI app on HF Spaces
 - ✔ Continuous monitoring with Prometheus + Grafana
 
-## Structure of the project folder:
+## Project Structure
 
-.github/
-    └── workflows/
-        ├── huggingface-space-deploy.yml
-        └── python-app.yml
-data/
-    └── load_data.py
-models/
-src/
-    ├── app/
-        ├── __pycache__/
-            └── config.cpython-311.pyc
-        ├── __init__.py
-        ├── app_post.py
-        ├── app.py
-        ├── config.py
-        └── utils.py
-    └── train_model.py
-tests/
-    └── test_app.py
-.dockerignore
-.gitignore
-docker-compose.yml
-Dockerfile
-env_config.sh
-prometheus.yml
-pytest.ini
-README.md
-requirements.txt
+
+.
+├── .github/
+│   └── workflows/
+│       ├── huggingface-space-deploy.yml
+│       └── python-app.yml
+├── data/
+│   └── load_data.py
+├── models/
+├── src/
+│   ├── app/
+│   │   ├── __pycache__/
+│   │   │   └── config.cpython-311.pyc
+│   │   ├── __init__.py
+│   │   ├── app_post.py
+│   │   ├── app.py
+│   │   ├── config.py
+│   │   └── utils.py
+│   └── train_model.py
+├── tests/
+│   └── test_app.py
+├── .dockerignore
+├── .gitignore
+├── docker-compose.yml
+├── Dockerfile
+├── env_config.sh
+├── prometheus.yml
+├── pytest.ini
+├── README.md
+└── requirements.txt
+
 
 ## Project Configuration
 
